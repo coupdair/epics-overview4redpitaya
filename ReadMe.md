@@ -16,6 +16,8 @@ cd EPICS/
 git clone git@gitlab.in2p3.fr:/Ganil-acq/Embedded/Modules/RedPitaya/EPICS/base      base-3.16.1
 git clone git@gitlab.in2p3.fr:/Ganil-acq/Embedded/Modules/RedPitaya/EPICS/asyn      asyn-R4-31
 git clone git@gitlab.in2p3.fr:/Ganil-acq/Embedded/Modules/RedPitaya/EPICS/redpitaya-epics
+cd redpitaya-epics/
+git checkout bin_base-3.16.1_asyn-R4-31
 ~~~
 
 
