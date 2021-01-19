@@ -2,14 +2,30 @@ EPICS overview for RedPitaya
 
 # deploy
 
-TODO
+- TODO: OS repo.
+- WinP: component repositories
+
+## repositories
+
+compiled tree from EPICS `base`, `asyn`Driver and `redpitaya-epics` repositories
+
+~~~ { .bash }
+cd ~/code/
+git clone git@gitlab.in2p3.fr:/Ganil-acq/Embedded/Modules/RedPitaya/EPICS/overview  EPICS
+cd EPICS/
+git clone git@gitlab.in2p3.fr:/Ganil-acq/Embedded/Modules/RedPitaya/EPICS/base      base-3.16.1
+git clone git@gitlab.in2p3.fr:/Ganil-acq/Embedded/Modules/RedPitaya/EPICS/asyn      asyn-R4-31
+git clone git@gitlab.in2p3.fr:/Ganil-acq/Embedded/Modules/RedPitaya/EPICS/redpitaya-epics
+~~~
+
 
 # compilation
 
 redpitaya-epics on STEMLab 125-14 Red Pitaya directly
 
 - `~/code` folder on SSD over USB2
-- compile in the order: EPICS base, asynDriver then redpitaya-epics
+- compile in the order: EPICS `base`, `asyn`Driver then `redpitaya-epics`
+- working even if error on `asyn` part
 
 ## hard/software
 
