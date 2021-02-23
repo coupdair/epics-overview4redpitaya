@@ -81,13 +81,31 @@ find / | grep -e caget -e libca --color
 /media/data/home/rp/code/EPICS/base-3.16.1/bin/linux-arm/caget.pl
 ~~~
 
+### v3.14.12.4
+
+- [`3.14.12.4`](https://epics.anl.gov/base/R3-14/4.php) WiP
+
+~~~ { .bash }
+cd ~/code/
+mkdir EPICS/
+cd EPICS/
+wget https://epics.anl.gov/download/base/baseR3.14.12.4.tar.gz
+tar xzf baseR3.14.12.4.tar.gz
+mv base-3.14.12.4 base
+cd base/
+make
+#FAIL after a while on test app.
+##make install
+~~~
+
+
 ## asynDriver
 
 Asynchronous Driver Support
 
 ### v4.31
 
-- [R4-31](https://epics-modules.github.io/master/asyn/)
+- [R4-31](https://epics-modules.github.io/master/asyn/) WiP
      - EPICS 3.14.12.2 or later
 
 ~~~ { .bash }
@@ -95,9 +113,10 @@ cd ~/code/EPICS/
 wget https://github.com/epics-modules/asyn/archive/R4-31.tar.gz
 mv R4-31.tar.gz asyn-R4-31.tar.gz
 tar xzf asyn-R4-31.tar.gz
-cd asyn-R4-31/
-#configure EPICS base path to "../base-*/":
-src=`grep "EPICS_BASE=" configure/RELEASE | tr / @`; dst=`cd ..; ls -d $PWD/base-* | head -n 1 | tr / @`; mv configure/RELEASE configure/RELEASE.old ; cat configure/RELEASE.old | tr / @ | sed "s/$src/EPICS_BASE=$dst/" | tr @ / | tee configure/RELEASE | grep base
+mv asyn-R4-31 asyn
+cd asyn/
+#configure EPICS base path to "../base/":
+src=`grep "EPICS_BASE=" configure/RELEASE | tr / @`; dst=`cd ..; ls -d $PWD/base | head -n 1 | tr / @`; mv configure/RELEASE configure/RELEASE.old ; cat configure/RELEASE.old | tr / @ | sed "s/$src/EPICS_BASE=$dst/" | tr @ / | tee configure/RELEASE | grep base
 make
 #FAIL after a while
 ~~~
