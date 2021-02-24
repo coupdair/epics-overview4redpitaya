@@ -161,11 +161,16 @@ https://github.com/AustralianSynchrotron/redpitaya-epics
 #or
 git clone https://github.com/coupdair/redpitaya-epics
 cd redpitaya-epics/
-#configure EPICS base path to "../base-*/":
-src=`grep "EPICS_BASE=" configure/RELEASE | tr / @`; dst=`cd ..; ls -d $PWD/base-* | head -n 1 | tr / @`; mv configure/RELEASE configure/RELEASE.old ; cat configure/RELEASE.old | tr / @ | sed "s/$src/EPICS_BASE=$dst/" | tr @ / | tee configure/RELEASE | grep base
-#configure ASYN path to "../asyn-*/":
-src=`grep "ASYN=" configure/RELEASE | tr / @`; dst=`cd ..; ls -d $PWD/asyn-* | head -n 1 | tr / @`; mv configure/RELEASE configure/RELEASE.old ; cat configure/RELEASE.old | tr / @ | sed "s/$src/ASYN=$dst/" | tr @ / | tee configure/RELEASE | grep asynmake
+#configure EPICS base path to "../base/":
+src=`grep "EPICS_BASE=" configure/RELEASE | tr / @`; dst=`cd ..; ls -d $PWD/base | head -n 1 | tr / @`; mv configure/RELEASE configure/RELEASE.old ; cat configure/RELEASE.old | tr / @ | sed "s/$src/EPICS_BASE=$dst/" | tr @ / | tee configure/RELEASE | grep base
+#configure ASYN path to "../asyn/":
+src=`grep "ASYN=" configure/RELEASE | tr / @`; dst=`cd ..; ls -d $PWD/asyn | head -n 1 | tr / @`; mv configure/RELEASE configure/RELEASE.old ; cat configure/RELEASE.old | tr / @ | sed "s/$src/ASYN=$dst/" | tr @ / | tee configure/RELEASE | grep asyn
+
+nano configure/RELEASE
+make clean
+
 make
+#FAIL after a while for base-3.14.12.4 and asyn-4.31
 ~~~
 
 ~~~ { .bash }
@@ -176,3 +181,4 @@ load_fpga_image.sh  RedPitayaTest
 lib/linux-arm:
 libdrvRedPitaya.a  libdrvRedPitaya.so
 ~~~
+
