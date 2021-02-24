@@ -1,5 +1,12 @@
 EPICS overview for RedPitaya
 
+EPICS works on RedPitaya with:
+
+- Ubuntu v16.04.3
+- base v3.16.1
+- asyn v4.31
+- redpitaya-epics
+
 # deploy
 
 - TODO: OS repo.
@@ -13,8 +20,9 @@ compiled tree from EPICS `base`, `asyn`Driver and `redpitaya-epics` repositories
 cd ~/code/
 git clone git@gitlab.in2p3.fr:/Ganil-acq/Embedded/Modules/RedPitaya/EPICS/overview  EPICS
 cd EPICS/
-git clone git@gitlab.in2p3.fr:/Ganil-acq/Embedded/Modules/RedPitaya/EPICS/base      base-3.16.1
-git clone git@gitlab.in2p3.fr:/Ganil-acq/Embedded/Modules/RedPitaya/EPICS/asyn      asyn-R4-31
+git clone git@gitlab.in2p3.fr:/Ganil-acq/Embedded/Modules/RedPitaya/EPICS/base      base
+cd base; git checkout base-3.16.1; cd ..
+git clone git@gitlab.in2p3.fr:/Ganil-acq/Embedded/Modules/RedPitaya/EPICS/asyn      asyn
 git clone git@gitlab.in2p3.fr:/Ganil-acq/Embedded/Modules/RedPitaya/EPICS/redpitaya-epics
 cd redpitaya-epics/
 git checkout bin_base-3.16.1_asyn-R4-31
@@ -81,9 +89,9 @@ find / | grep -e caget -e libca --color
 /media/data/home/rp/code/EPICS/base-3.16.1/bin/linux-arm/caget.pl
 ~~~
 
-### v3.14.12.4
+### ~~v3.14.12.4~~
 
-- [`3.14.12.4`](https://epics.anl.gov/base/R3-14/4.php) WiP
+- [`3.14.12.4`](https://epics.anl.gov/base/R3-14/4.php) FAIL
 
 ~~~ { .bash }
 cd ~/code/
@@ -95,7 +103,6 @@ mv base-3.14.12.4 base
 cd base/
 make
 #FAIL after a while on test app.
-##make install
 ~~~
 
 
@@ -105,8 +112,9 @@ Asynchronous Driver Support
 
 ### v4.31
 
-- [R4-31](https://epics-modules.github.io/master/asyn/) WiP
+- [R4-31](https://epics-modules.github.io/master/asyn/)
      - EPICS 3.14.12.2 or later
+     - EPICS 3.16.1 ok
 
 ~~~ { .bash }
 cd ~/code/EPICS/
@@ -118,7 +126,7 @@ cd asyn/
 #configure EPICS base path to "../base/":
 src=`grep "EPICS_BASE=" configure/RELEASE | tr / @`; dst=`cd ..; ls -d $PWD/base | head -n 1 | tr / @`; mv configure/RELEASE configure/RELEASE.old ; cat configure/RELEASE.old | tr / @ | sed "s/$src/EPICS_BASE=$dst/" | tr @ / | tee configure/RELEASE | grep base
 make
-#FAIL after a while
+#FAIL after a while, but that is not a problem
 ~~~
 
 ~~~ { .text }
@@ -170,7 +178,6 @@ nano configure/RELEASE
 make clean
 
 make
-#FAIL after a while for base-3.14.12.4 and asyn-4.31
 ~~~
 
 ~~~ { .bash }
