@@ -1,5 +1,16 @@
 EPICS overview for RedPitaya
 
+<!--- begin@of@TOC --->
+# Table of contents
+
+1. [deploy](#deploy)
+     1. [repositories](#repositories)
+1. [compilation](#compilation)
+     1. [EPICS base](#epics-base)
+     1. [asynDriver](#asyndriver)
+     1. [redpitaya-epics](#redpitaya-epics)
+<!--- end@of@TOC --->
+
 EPICS works on RedPitaya with:
 
 - Ubuntu v16.04.3
