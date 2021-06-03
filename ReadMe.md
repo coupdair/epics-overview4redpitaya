@@ -27,6 +27,23 @@ EPICS works on RedPitaya with:
 
 compiled tree from EPICS `base`, `asyn`Driver and `redpitaya-epics` repositories
 
+### GitHub
+
+~~~ { .bash }
+cd ~/code/
+git clone https://github.com/coupdair/epics-overview4redpitaya  EPICS
+cd EPICS/
+git clone https://github.com/coupdair/epics-base                base
+cd base; git checkout base-3.16.1; cd ..
+git clone https://github.com/coupdair/epics-asyn                asyn
+cd asyn; git checkout asyn-4.31_for_base-3.16.1; cd ..
+git clone https://github.com/coupdair/redpitaya-epics
+cd redpitaya-epics/
+git checkout bin_base-3.16.1_asyn-R4-31
+~~~
+
+### GitLab
+
 ~~~ { .bash }
 cd ~/code/
 git clone git@gitlab.in2p3.fr:/Ganil-acq/Embedded/Modules/RedPitaya/EPICS/overview  EPICS
